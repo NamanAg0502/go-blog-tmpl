@@ -15,7 +15,7 @@ func main() {
 		Handler: mux,
 	}
 
-	log.Println("Server is running on port 4000...")
+	log.Println("Server is running on port http://localhost:4000/")
 	if err := server.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}

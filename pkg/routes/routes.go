@@ -1,16 +1,24 @@
 package routes
 
 import (
+	"log"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
+
 	"github.com/namanag0502/go-blog/pkg/handlers"
 	"github.com/namanag0502/go-blog/pkg/middleware"
 )
 
 func Routes() *chi.Mux {
 	mux := chi.NewMux()
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	h := middleware.AuthHandler{
 		Username: os.Getenv("AUTH_USERNAME"),
